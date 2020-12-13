@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "62426417860",
-    "firebase_url": "https://tes-garena.firebaseio.com",
-    "project_id": "tes-garena",
-    "storage_bucket": "tes-garena.appspot.com"
+    "project_number": "756506461117",
+    "firebase_url": "https://trial-firebase-95a60.firebaseio.com",
+    "project_id": "trial-firebase-95a60",
+    "storage_bucket": "trial-firebase-95a60.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:62426417860:android:b4fab917f980cd4884d791",
+        "mobilesdk_app_id": "1:756506461117:android:8fe8442e549eebca9188d4",
         "android_client_info": {
           "package_name": "com.id.gsronline.flutter_maps"
         }
       },
       "oauth_client": [
         {
-          "client_id": "62426417860-5irgv7j1av3k1oc8lomr7qrqjs32v80t.apps.googleusercontent.com",
+          "client_id": "756506461117-rce032mj16uag5crk5b4t5k48hk049rt.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDwjgSNXCBBhyMhUOq-xtDNqFc2VCmukQs"
+          "current_key": "AIzaSyA3KKuDUtS5wIQW9XsPmzarCKSMGIB_K6E"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "62426417860-5irgv7j1av3k1oc8lomr7qrqjs32v80t.apps.googleusercontent.com",
+              "client_id": "756506461117-rce032mj16uag5crk5b4t5k48hk049rt.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

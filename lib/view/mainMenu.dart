@@ -35,7 +35,7 @@ class _MainMenuState extends State<MainMenu> {
             height: MediaQuery.of(context).size.height / 4,
           ),
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 15,),
+            padding: EdgeInsets.symmetric(vertical: 15),
             child: Container(
               padding: EdgeInsets.symmetric(vertical: 25),
               decoration: BoxDecoration(

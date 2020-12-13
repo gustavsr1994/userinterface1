@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_maps/assets/style.dart';
+import 'package:flutter_maps/services/AuthMethode.dart';
 import 'package:flutter_maps/view/mainMenu.dart';
 
 class LoginView extends StatefulWidget {
@@ -9,7 +10,10 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  TextEditingController _controller = new TextEditingController();
+  AuthMethode authMethode = new AuthMethode();
+  TextEditingController _email = new TextEditingController();
+  TextEditingController _password = new TextEditingController();
+
   FocusNode _focusNode = new FocusNode();
   @override
   Widget build(BuildContext context) {
@@ -43,6 +47,7 @@ class _LoginViewState extends State<LoginView> {
               padding: EdgeInsets.symmetric(horizontal: 25),
               child: TextFormField(
                   style: fontEditText,
+                  controller: _email,
                   decoration: InputDecoration(
                     border: UnderlineInputBorder(
                         borderSide: BorderSide(color: colorPrimary)),
@@ -71,6 +76,7 @@ class _LoginViewState extends State<LoginView> {
               padding: EdgeInsets.symmetric(horizontal: 25),
               child: TextFormField(
                   style: fontEditText,
+                  controller: _password,
                   decoration: InputDecoration(
                     border: UnderlineInputBorder(
                         borderSide: BorderSide(color: colorPrimary)),
@@ -116,10 +122,39 @@ class _LoginViewState extends State<LoginView> {
                   )),
               child: FlatButton(
                 onPressed: () {
-                  Navigator.pushReplacement(context, _createRoute());
+                  authMethode.signInAuth(_email.text, _password.text).then(
+                      (value) => value != null
+                          ? Navigator.pushReplacement(context, _createRoute())
+                          : print("Error : " + value));
                 },
                 child: Text(
-                  'Login',
+                  'Sign In',
+                  style: fontButton,
+                ),
+              ),
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+              margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              decoration: BoxDecoration(
+                  color: colorPrimary,
+                  border: Border.all(
+                    style: BorderStyle.solid,
+                    color: colorPrimary,
+                  ),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(90),
+                  )),
+              child: FlatButton(
+                onPressed: () {
+                  authMethode.signUpAuth(_email.text, _password.text).then(
+                      (value) => value != null
+                          ? Navigator.pushReplacement(context, _createRoute())
+                          : print("Error : " + value));
+                },
+                child: Text(
+                  'Sign Up',
                   style: fontButton,
                 ),
               ),

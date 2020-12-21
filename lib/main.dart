@@ -21,10 +21,9 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home:
-            //DetailProduct()
-            AboutUs()
+    return MaterialApp(home: LoginView()
+        //DetailProduct()
+        // AboutUs()
         //MapsView()
         );
   }

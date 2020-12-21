@@ -4,7 +4,7 @@ import 'package:flutter_maps/assets/network_image.dart';
 import 'package:flutter_maps/assets/style.dart';
 import 'package:flutter_maps/view/mainMenu.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:search_app_bar/filter.dart';
+// import 'package:search_app_bar/filter.dart';
 import 'package:search_app_bar/search_app_bar.dart';
 
 class MenuProduct extends StatefulWidget {
@@ -32,21 +32,21 @@ class _MenuProductState extends State<MenuProduct> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
-              // padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-              child: SearchAppBar<String>(
-                title: Text(
-                  'Search product by name',
-                  style: fontDescription,
-                ),
-                filter: Filters.startsWith,
-                backgroundColor: Colors.white,
-                hintText: 'Product',
-                searchElementsColor: colorPrimary,
-                iconTheme: IconThemeData(color: colorPrimary), searcher: null,
-              ),
-            ),
+            // Container(
+            //   margin: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+            //   // padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+            //   child: SearchAppBar<String>(
+            //     title: Text(
+            //       'Search product by name',
+            //       style: fontDescription,
+            //     ),
+            //     filter: Filters.startsWith,
+            //     backgroundColor: Colors.white,
+            //     hintText: 'Product',
+            //     searchElementsColor: colorPrimary,
+            //     iconTheme: IconThemeData(color: colorPrimary), searcher: null,
+            //   ),
+            // ),
             Container(
               height: MediaQuery.of(context).size.height,
               child: StaggeredGridView.countBuilder(

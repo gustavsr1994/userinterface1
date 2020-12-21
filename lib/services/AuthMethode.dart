@@ -9,6 +9,10 @@ class AuthMethode {
     return user != null ? UserModel(userId: user.uid) : null;
   }
 
+  UserModel _userException(String message) {
+    return message != null ? UserModel(message: message) : null;
+  }
+
   Future signInAuth(String email, String password) async {
     try {
       UserCredential result = await _authService.signInWithEmailAndPassword(
@@ -17,7 +21,7 @@ class AuthMethode {
       User firebaseUser = result.user;
       return _userFromFirebaseUser(firebaseUser);
     } catch (exception) {
-      print(exception.toString());
+      return _userException(exception.toString());
     }
   }
 
@@ -29,9 +33,7 @@ class AuthMethode {
       User firebaseUser = result.user;
       return _userFromFirebaseUser(firebaseUser);
     } catch (exception) {
-      print(exception.toString());
+      return _userException(exception.toString());
     }
   }
-
-
 }

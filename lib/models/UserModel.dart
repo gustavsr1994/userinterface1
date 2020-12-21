@@ -1,5 +1,5 @@
-class UserModel{
+class UserModel {
   String userId;
-
-  UserModel({this.userId});
+  String message;
+  UserModel({this.userId, this.message});
 }

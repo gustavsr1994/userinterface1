@@ -8,52 +8,53 @@
 	"religion": "Islam",
 	"email": "gustavr1994@gmail.com",
 	"lastEducation": "S1 - Technical Information",
-	"educations": 
-		[
-			{
-				"nameOrganization": "SDN Jatirahayu VII",
-				"location": "Bekasi City",
-				"major": "-",
-				"lastPoint": "-"
-			},
-			{
-				"nameOrganization": "SMP N 192",
-				"location": "Jakarta Timur",
-				"major": "-",
-				"lastPoint": "-"
-			},
-			{
-				"nameOrganization": "SMA N 113",
-				"location": "Jakarta Timur",
-				"major": "IPA",
-				"lastPoint": "-"
-			},
-			{
-				"nameOrganization": "University of Gunadarma",
-				"location": "Bekasi City",
-				"major": "S1 - Technical Information",
-				"lastPoint": "3.46"
-			}
-		],
-	"workHistory": 
-		[
-			{
-				"nameOrganization": "Mitra Integrasi Informatika",
-				"industry": "Technology",
-				"job": "Application Developer",
-				"date": "May 2017 - April 2018"
-			},
-			{
-				"nameOrganization": "PT Prambanan Kencana",
-				"industry": "Food and Beverage",
-				"job": "Fullstack Developer",
-				"date": "May 2018 - December 2020"				
-			},
-			{
-				"nameOrganization": "PT Altama Surya Anugerah",
-				"industry": "Tools",
-				"job": "Mobile Developer",
-				"date": "December 2020 - Now"	
-			}
-		]
+	"educations": [
+		{
+			"nameOrganization": "SDN Jatirahayu VII",
+			"location": "Bekasi City",
+			"major": "-",
+			"lastPoint": "-"
+		},
+		{
+			"nameOrganization": "SMP N 192",
+			"location": "Jakarta Timur",
+			"major": "-",
+			"lastPoint": "-"
+		},
+		{
+			"nameOrganization": "SMA N 113",
+			"location": "Jakarta Timur",
+			"major": "IPA",
+			"lastPoint": "-"
+		},
+		{
+			"nameOrganization": "University of Gunadarma",
+			"location": "Bekasi City",
+			"major": "S1 - Technical Information",
+			"lastPoint": "3.46"
+		}
+	],
+	"workHistory": [
+		{
+			"nameOrganization": "Mitra Integrasi Informatika",
+			"industry": "Technology",
+			"job": "Application Developer",
+			"date": "May 2017 - April 2018",
+			"location": "-6.176203864635109, 106.7918444400029"
+		},
+		{
+			"nameOrganization": "PT Prambanan Kencana",
+			"industry": "Food and Beverage",
+			"job": "Fullstack Developer",
+			"date": "May 2018 - December 2020",
+			"location": "-6.174918997457028, 106.81522101301395"
+		},
+		{
+			"nameOrganization": "PT Inet Global Indo",
+			"industry": "Tech",
+			"job": "Software Developer(Flutter)",
+			"date": "December 2020 - Now",
+			"location": "-6.238403793556614, 106.82403548233299"
+		}
+	]
 }

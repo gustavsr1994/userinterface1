@@ -20,9 +20,9 @@ class LoginLoadingState extends LoginState{
 
 class LoginLoadedState extends LoginState{
   final UserModel userModel;
-  final String userToken;
+  final BuildContext context;
   
-  LoginLoadedState({@required this.userModel, @required this.userToken});
+  LoginLoadedState({@required this.userModel, @required this.context});
 
   @override
   List<Object> get props => [userModel];

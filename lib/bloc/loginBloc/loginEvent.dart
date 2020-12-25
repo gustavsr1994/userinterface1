@@ -9,9 +9,9 @@ abstract class LoginEvent extends Equatable{
 class FetchLoginEvent extends LoginEvent{
   final String username;
   final String password;
-  final String userToken;
+  final BuildContext context;
 
-  FetchLoginEvent({@required this.username, @required this.password, @required this.userToken});
+  FetchLoginEvent({@required this.username, @required this.password, @required this.context});
 
   @override
   List<Object> get props => [username, password];

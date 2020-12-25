@@ -117,14 +117,21 @@ class WorkHistory {
   String industry;
   String job;
   String date;
+  String location;
 
-  WorkHistory({this.nameOrganization, this.industry, this.job, this.date});
+  WorkHistory(
+      {this.nameOrganization,
+      this.industry,
+      this.job,
+      this.date,
+      this.location});
 
   WorkHistory.fromJson(Map<String, dynamic> json) {
     nameOrganization = json['nameOrganization'];
     industry = json['industry'];
     job = json['job'];
     date = json['date'];
+    location = json['location'];
   }
 
   Map<String, dynamic> toJson() {
@@ -133,6 +140,7 @@ class WorkHistory {
     data['industry'] = this.industry;
     data['job'] = this.job;
     data['date'] = this.date;
+    data['location'] = this.location;
     return data;
   }
 }

@@ -40,8 +40,6 @@ class _LoginViewState extends State<LoginView> {
                     return Center(
                       child: CircularProgressIndicator(),
                     );
-                  } else if (state is LoginLoadedState) {
-                    RouteAdapter().routeNavigator(context, MainMenu());
                   }
                   return SingleChildScrollView(
                     child: Column(
@@ -156,7 +154,7 @@ class _LoginViewState extends State<LoginView> {
                                   : _loginBloc.add(FetchLoginEvent(
                                       username: _email.text,
                                       password: _password.text,
-                                      userToken: null));
+                                      context: context));
                             },
                             child: Text(
                               'Sign In',

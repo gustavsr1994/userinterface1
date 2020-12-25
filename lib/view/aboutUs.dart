@@ -7,6 +7,7 @@ import 'package:flutter_maps/assets/network_image.dart';
 import 'package:flutter_maps/assets/style.dart';
 import 'package:flutter_maps/models/Profile.dart';
 import 'package:flutter_maps/view/mainMenu.dart';
+import 'package:flutter_maps/view/mapsView.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:getwidget/components/accordian/gf_accordian.dart';
 
@@ -30,13 +31,13 @@ class _AboutUsState extends State<AboutUs> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-        onWillPop: _onBackPress,
+        onWillPop: onBackPress,
         child: Scaffold(
             appBar: AppBar(
               backgroundColor: colorPrimary,
               leading: IconButton(
                 icon: Icon(Icons.arrow_back, color: colorAccent),
-                onPressed: _onBackPress,
+                onPressed: onBackPress,
               ),
               title: HeaderForm(title: 'My Profile'),
             ),
@@ -98,10 +99,10 @@ class _AboutUsState extends State<AboutUs> {
                     ),
                     child: Center(
                         child: ClipRRect(
-                      borderRadius: BorderRadius.circular(85),
-                      child:
-                          PNetworkImage(model.photoProfil, fit: BoxFit.cover),
-                    ))))
+                            borderRadius: BorderRadius.circular(95),
+                            child: Image(
+                                image: AssetImage(
+                                    'lib/assets/images/photo_profile.jpg'))))))
           ]))
     ]);
   }
@@ -162,12 +163,25 @@ class _AboutUsState extends State<AboutUs> {
                 contentChild: Column(children: <Widget>[
                   TextChildProfile(title: 'Industry', value: item.industry),
                   TextChildProfile(title: 'Job', value: item.job),
-                  TextChildProfile(title: 'Date', value: item.date)
+                  TextChildProfile(title: 'Date', value: item.date),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    margin: EdgeInsets.all(10),
+                    child: RaisedButton(
+                      color: colorAccent,
+                        child: Text('Check Map'),
+                        onPressed: () => RouteAdapter().routeNavigator(
+                            context,
+                            MapsView(
+                                nameCorp: item.nameOrganization,
+                                coordinate: item.location,
+                                industry: item.industry))),
+                  )
                 ]))
         ]));
   }
 
-  Future<bool> _onBackPress() {
+  Future<bool> onBackPress() {
     return RouteAdapter().routeNavigator(context, MainMenu());
   }
 }

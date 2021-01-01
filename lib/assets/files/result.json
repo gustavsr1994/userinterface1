@@ -1,0 +1,17 @@
+{
+    "status": 1,
+    "message": "Sukses Di Ambil.",
+    "result14": [
+        {
+            "FastLabId": "1",
+            "FastLabName": "Fast Result",
+            "FastLabDesc": "Hasil 2.5 - 4 jam",
+            "FastLabCategory": "N",
+            "FastLabPicture": "http://medcare.fastlab.id/uploads/fastlab_fastresult2.png",
+            "UrlContent": "",
+            "PriceBruto": "1800000",
+            "Discount": "0",
+            "DiscPercent": "0.00"
+        }
+    ]
+}

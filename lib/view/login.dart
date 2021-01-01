@@ -8,7 +8,9 @@ import 'package:flutter_maps/bloc/loginBloc/loginEvent.dart';
 import 'package:flutter_maps/bloc/loginBloc/loginState.dart';
 import 'package:flutter_maps/repository/LoginRepository.dart';
 import 'package:flutter_maps/services/AuthMethode.dart';
+import 'package:flutter_maps/view/loginPhone.dart';
 import 'package:flutter_maps/view/mainMenu.dart';
+import 'package:flutter_maps/view/registrasi.dart';
 
 class LoginView extends StatefulWidget {
   @override
@@ -132,7 +134,25 @@ class _LoginViewState extends State<LoginView> {
                                   ),
                                 ),
                               )
-                            : SizedBox(height: 20),
+                            : SizedBox(height: 5),
+                        Container(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                          margin: EdgeInsets.symmetric(horizontal: 10),
+                          child: InkWell(
+                            onTap: () {
+                              RouteAdapter()
+                                  .routeNavigator(context, RegitrasiView());
+                            },
+                            child: Text(
+                              'Registrasi. Click here...',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: colorPrimary),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 15),
                         Container(
                           width: MediaQuery.of(context).size.width,
                           padding:
@@ -154,6 +174,7 @@ class _LoginViewState extends State<LoginView> {
                                   : _loginBloc.add(FetchLoginEvent(
                                       username: _email.text,
                                       password: _password.text,
+                                      typeLogin: 0,
                                       context: context));
                             },
                             child: Text(
@@ -162,12 +183,12 @@ class _LoginViewState extends State<LoginView> {
                             ),
                           ),
                         ),
+                        SizedBox(height: 15),
                         Container(
                           width: MediaQuery.of(context).size.width,
                           padding:
                               EdgeInsets.symmetric(horizontal: 25, vertical: 5),
-                          margin: EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 10),
+                          margin: EdgeInsets.symmetric(horizontal: 10),
                           decoration: BoxDecoration(
                               color: colorPrimary,
                               border: Border.all(
@@ -179,39 +200,23 @@ class _LoginViewState extends State<LoginView> {
                               )),
                           child: FlatButton(
                             onPressed: () {
-                              authMethode
-                                  .signUpAuth(_email.text, _password.text)
-                                  .then((value) => value != null
-                                      ? Navigator.pushReplacement(
-                                          context, _createRoute())
-                                      : print("Error : " + value));
+                              state is LoginLoadingState
+                                  ? null
+                                  : _loginBloc.add(FetchLoginEvent(
+                                      username: _email.text,
+                                      password: _password.text,
+                                      typeLogin: 1,
+                                      context: context));
                             },
                             child: Text(
-                              'Sign Up',
+                              'Sign In with Google',
                               style: fontButton,
                             ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                   );
                 })));
-  }
-
-  Route _createRoute() {
-    return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => MainMenu(),
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        var begin = Offset(0.0, 1.0);
-        var end = Offset.zero;
-        var curve = Curves.ease;
-        var tween =
-            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-        return SlideTransition(
-          position: animation.drive(tween),
-          child: child,
-        );
-      },
-    );
   }
 }

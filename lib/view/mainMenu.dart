@@ -1,3 +1,4 @@
+import 'package:clay_containers_plus/clay_containers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_maps/adapters/CardMainMenuAdapter.dart';
@@ -19,7 +20,7 @@ class _MainMenuState extends State<MainMenu> {
         elevation: 0,
         leading: BackButton(
           color: colorAccent,
-          onPressed: (){
+          onPressed: () {
             Navigator.pushReplacement(context, _createRoute());
           },
         ),
@@ -45,16 +46,19 @@ class _MainMenuState extends State<MainMenu> {
               child: SingleChildScrollView(
                 child: Column(
                   children: <Widget>[
-                    Container(
-                      margin: EdgeInsets.symmetric(horizontal: 13, vertical: 10),
+                    ClayContainer(
+                      margin:
+                          EdgeInsets.symmetric(horizontal: 13, vertical: 10),
                       width: MediaQuery.of(context).size.width,
                       height: 90,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(25)),
-                          border: Border.all(
-                              color: colorPrimary,
-                              style: BorderStyle.solid,
-                              width: 1.5)),
+                      customBorderRadius: BorderRadius.all(Radius.circular(25)),
+                      color: colorNetral,
+                      // decoration: BoxDecoration(
+                      //     borderRadius: BorderRadius.all(Radius.circular(25)),
+                      //     border: Border.all(
+                      //         color: colorPrimary,
+                      //         style: BorderStyle.solid,
+                      //         width: 1.5)),
                       child: Column(
                         children: <Widget>[
                           Container(
@@ -128,7 +132,8 @@ class _MainMenuState extends State<MainMenu> {
         var end = Offset.zero;
         var curve = Curves.ease;
 
-        var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
         return SlideTransition(
           position: animation.drive(tween),

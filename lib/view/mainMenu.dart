@@ -1,10 +1,14 @@
+import 'dart:convert';
+
 import 'package:clay_containers_plus/clay_containers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_maps/adapters/CardMainMenuAdapter.dart';
 import 'package:flutter_maps/assets/constant.dart';
 import 'package:flutter_maps/assets/style.dart';
+import 'package:flutter_maps/services/Database.dart';
 import 'package:flutter_maps/view/login.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MainMenu extends StatefulWidget {
   @override
@@ -12,6 +16,27 @@ class MainMenu extends StatefulWidget {
 }
 
 class _MainMenuState extends State<MainMenu> {
+// SharedPreferences preferences;
+  String nameAccount = '';
+  @override
+  void initState() {
+    super.initState();
+    SharedPreferences.getInstance().then((preferences) {
+      String listProduct = preferences.getString('listProduct');
+
+      preferences.setString('cart', '');
+      if (listProduct == null) {
+        getAllProducts().then((value) {
+          listProduct = jsonEncode(value);
+          preferences.setString('listProduct', listProduct);
+        });
+      }
+      setState(() {
+        nameAccount = preferences.getString('nameAccount');
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +75,7 @@ class _MainMenuState extends State<MainMenu> {
                       margin:
                           EdgeInsets.symmetric(horizontal: 13, vertical: 10),
                       width: MediaQuery.of(context).size.width,
-                      height: 90,
+                      height: 120,
                       customBorderRadius: BorderRadius.all(Radius.circular(25)),
                       color: colorNetral,
                       // decoration: BoxDecoration(
@@ -63,7 +88,14 @@ class _MainMenuState extends State<MainMenu> {
                         children: <Widget>[
                           Container(
                             child: Text(
-                              'Penjualan',
+                              'Welcome ' + nameAccount,
+                              style: fontDescription,
+                            ),
+                            margin: EdgeInsets.symmetric(vertical: 10),
+                          ),
+                          Container(
+                            child: Text(
+                              'Record Sales',
                               style: fontDescription,
                             ),
                             margin: EdgeInsets.symmetric(vertical: 10),
@@ -72,21 +104,17 @@ class _MainMenuState extends State<MainMenu> {
                             children: <Widget>[
                               Container(
                                   margin: EdgeInsets.symmetric(horizontal: 5),
-                                  child: Expanded(
-                                      flex: 1,
-                                      child: Text(
-                                        'September 2020',
-                                        style: fontDescription,
-                                      ))),
+                                  child: Text(
+                                    'Total Amount',
+                                    style: fontDescription,
+                                  )),
                               Spacer(),
                               Container(
                                   margin: EdgeInsets.symmetric(horizontal: 5),
-                                  child: Expanded(
-                                      flex: 1,
-                                      child: Text(
-                                        'Rp 15.000.000,-',
-                                        style: fontDescription,
-                                      )))
+                                  child: Text(
+                                    'Rp 15.000.000,-',
+                                    style: fontDescription,
+                                  ))
                             ],
                           ),
                         ],

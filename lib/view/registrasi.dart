@@ -51,7 +51,7 @@ class _RegitrasiViewState extends State<RegitrasiView> {
                             color: colorPrimary,
                           ),
                           child:
-                              Center(child: Text('Test : 1', style: fontTitle)),
+                              Center(child: Text('Aplikasi Suka Suka', style: fontTitle)),
                         ),
                         SizedBox(
                           height: 70,
@@ -74,13 +74,13 @@ class _RegitrasiViewState extends State<RegitrasiView> {
                                 border: UnderlineInputBorder(
                                     borderSide:
                                         BorderSide(color: colorPrimary)),
-                                labelText: 'Masukkan Name',
+                                labelText: 'Masukkan Email',
                                 labelStyle: fontEditText,
                                 icon: Icon(
                                   Icons.person_outline,
                                   color: colorPrimary,
                                 ),
-                                hintText: 'Name',
+                                hintText: 'Email',
                               )),
                         ),
                         SizedBox(

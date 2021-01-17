@@ -55,12 +55,7 @@ class _AboutUsState extends State<AboutUs> {
             borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(30),
                 bottomRight: Radius.circular(30)),
-            gradient: LinearGradient(colors: [
-              colorPrimary,
-              colorAccent,
-              colorAccent,
-              colorPrimary
-            ])),
+            color: colorAccent),
       ),
       Ink(
         height: 180,
@@ -168,7 +163,7 @@ class _AboutUsState extends State<AboutUs> {
                     width: MediaQuery.of(context).size.width,
                     margin: EdgeInsets.all(10),
                     child: RaisedButton(
-                      color: colorAccent,
+                        color: colorAccent,
                         child: Text('Check Map'),
                         onPressed: () => RouteAdapter().routeNavigator(
                             context,

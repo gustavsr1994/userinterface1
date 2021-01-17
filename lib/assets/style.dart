@@ -7,7 +7,7 @@ Color colorRed = Colors.red;
 Color colorNetral = Colors.white;
 
 TextStyle fontTitle =
-    TextStyle(fontSize: 25, color: colorAccent, fontWeight: FontWeight.bold);
+    TextStyle(fontSize: 25, color: colorNetral, fontWeight: FontWeight.bold);
 
 TextStyle fontAbout = TextStyle(fontSize: 17, color: colorAccent);
 TextStyle fontDescription =

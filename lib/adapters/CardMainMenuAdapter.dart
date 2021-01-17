@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_maps/assets/style.dart';
+import 'package:flutter_maps/view/absentView.dart';
 import 'package:flutter_maps/view/menuProduct.dart';
 
 class CardMainMenuAdapter extends StatelessWidget {
@@ -15,16 +16,8 @@ class CardMainMenuAdapter extends StatelessWidget {
         if (index == 0) {
           Navigator.pushReplacement(context, _createRoute(MenuProduct()));
         } else if (index == 1) {
-          Navigator.pushReplacement(context, _createRoute(MenuProduct()));
-        } else if (index == 2) {
-          Navigator.pushReplacement(context, _createRoute(MenuProduct()));
-        } else if (index == 3) {
-          Navigator.pushReplacement(context, _createRoute(MenuProduct()));
-        } else if (index == 4) {
-          Navigator.pushReplacement(context, _createRoute(MenuProduct()));
-        } else if (index == 5) {
-          Navigator.pushReplacement(context, _createRoute(MenuProduct()));
-        }
+          Navigator.pushReplacement(context, _createRoute(AbsentView()));
+        } 
       },
       child: Card(
         color: colorPrimary,

@@ -7,12 +7,13 @@ import 'package:flutter_maps/assets/style.dart';
 import 'package:flutter_maps/models/UserModel.dart';
 import 'package:flutter_maps/view/mainMenu.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthMethode {
   final FirebaseAuth _authService = FirebaseAuth.instance;
 
   UserModel _userFromFirebaseUser(User user) {
-    return user != null ? UserModel(userId: user.uid) : null;
+    return user != null ? UserModel(userId: user.uid, name: user.displayName) : null;
   }
 
   UserModel _userException(String message) {
@@ -57,6 +58,10 @@ class AuthMethode {
       UserCredential result =
           (await _authService.signInWithCredential(credential));
       User firebaseUser = result.user;
+      UserModel userModel = _userFromFirebaseUser(firebaseUser);
+      SharedPreferences.getInstance().then((value) {
+        value.setString('nameAccount', userModel.name);
+      });
       return _userFromFirebaseUser(firebaseUser);
     } catch (exception) {
       return _userException(exception.toString());
@@ -64,7 +69,7 @@ class AuthMethode {
   }
 
   // ignore: missing_return
-  
+
   //  Future signUpwithGoogle() async {
   //   try {
   //     GoogleR _googleSignIn = new GoogleSignIn();

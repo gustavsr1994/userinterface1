@@ -7,6 +7,7 @@ import 'package:flutter_maps/repository/LoginRepository.dart';
 import 'package:flutter_maps/services/AuthMethode.dart';
 import 'package:flutter_maps/view/mainMenu.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'loginEvent.dart';
 import 'loginState.dart';
@@ -21,6 +22,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   @override
   Stream<LoginState> mapEventToState(LoginEvent event) async* {
+    SharedPreferences preferences;
     UserModel model;
     if (event is FetchLoginEvent) {
       yield LoginLoadingState();

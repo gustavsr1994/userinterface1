@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_maps/adapters/RouteAdapter.dart';
 import 'package:flutter_maps/assets/assets/BottomSheetCart.dart';
+import 'package:flutter_maps/assets/assets/BottomSheetDescription.dart';
 import 'package:flutter_maps/assets/network_image.dart';
 import 'package:flutter_maps/assets/style.dart';
 import 'package:flutter_maps/models/Cart.dart';
@@ -89,19 +90,19 @@ class _MenuProductState extends State<MenuProduct> {
                             String cart = value.getString('cart');
                             dynamic objResult = jsonDecode(cart);
                             List<Cart> listCart = new List<Cart>();
+                            int totalAmount = 0;
                             for (var result in objResult) {
                               Cart cartModel = new Cart();
                               cartModel =
                                   Cart.fromJson(result as Map<String, dynamic>);
+                              totalAmount = cartModel.subTotal + totalAmount;
                               listCart.add(cartModel);
                             }
-// if(listCart.length == 0){
-//   Toa
-// }
                             bottomSheetCart(
                                 context: context,
                                 listCart: listCart,
-                                provider: provider);
+                                provider: provider,
+                                totalAmount: totalAmount);
                           });
                         }),
                     body: Column(children: <Widget>[
@@ -151,79 +152,89 @@ class _MenuProductState extends State<MenuProduct> {
                                       crossAxisSpacing: 4.0,
                                       mainAxisSpacing: 4.0,
                                       itemCount: _listProduct.length,
-                                      itemBuilder: (context, index) => Card(
-                                        elevation: 2,
-                                        shadowColor: colorSecond,
-                                        margin: EdgeInsets.symmetric(
-                                            vertical: 5.0, horizontal: 7.0),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            Container(
-                                                height: 100,
-                                                margin: EdgeInsets.all(5),
-                                                width: double.infinity,
-                                                child: PNetworkImage(
-                                                    _listProduct[index]
-                                                        .urlImage,
-                                                    fit: BoxFit.cover)),
-                                            SizedBox(
-                                              height: 7,
-                                            ),
-                                            Container(
-                                              margin: EdgeInsets.symmetric(
-                                                  vertical: 5.0,
-                                                  horizontal: 5.0),
-                                              child: Text(
-                                                  _listProduct[index]
-                                                      .nameProduct,
-                                                  style: fontDescription),
-                                            ),
-                                            SizedBox(
-                                              height: 5,
-                                            ),
-                                            Container(
-                                              margin: EdgeInsets.symmetric(
-                                                  vertical: 5.0,
-                                                  horizontal: 5.0),
-                                              child: Text(
-                                                  'Stock : ' +
+                                      itemBuilder: (context, index) =>
+                                          GestureDetector(
+                                        onTap: () {
+                                          bottomSheetDescription(
+                                              context: context,
+                                              description: _listProduct[index]
+                                                  .nameProduct);
+                                        },
+                                        child: Card(
+                                          elevation: 2,
+                                          shadowColor: colorSecond,
+                                          margin: EdgeInsets.symmetric(
+                                              vertical: 5.0, horizontal: 7.0),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Container(
+                                                  height: 100,
+                                                  margin: EdgeInsets.all(5),
+                                                  width: double.infinity,
+                                                  child: PNetworkImage(
                                                       _listProduct[index]
-                                                          .stok
-                                                          .toString(),
-                                                  style: fontDescription),
-                                            ),
-                                            SizedBox(
-                                              height: 5,
-                                            ),
-                                            Container(
-                                              margin: EdgeInsets.symmetric(
-                                                  vertical: 5.0,
-                                                  horizontal: 5.0),
-                                              child: Text(
-                                                  'Price : ' +
-                                                      _listProduct[index].price,
-                                                  style: fontDescription),
-                                            ),
-                                            SizedBox(
-                                              height: 5,
-                                            ),
-                                            Container(
-                                              margin: EdgeInsets.all(5),
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width,
-                                              child: RaisedButton(
-                                                  color: colorPrimary,
-                                                  child: Text('Add Cart',
-                                                      style: fontButton),
-                                                  onPressed: () {
-                                                    provider.setCart(
-                                                        _listProduct[index]);
-                                                  }),
-                                            )
-                                          ],
+                                                          .urlImage,
+                                                      fit: BoxFit.cover)),
+                                              SizedBox(
+                                                height: 7,
+                                              ),
+                                              Container(
+                                                margin: EdgeInsets.symmetric(
+                                                    vertical: 5.0,
+                                                    horizontal: 5.0),
+                                                child: Text(
+                                                    _listProduct[index]
+                                                        .nameProduct,
+                                                    style: fontDescription),
+                                              ),
+                                              SizedBox(
+                                                height: 5,
+                                              ),
+                                              Container(
+                                                margin: EdgeInsets.symmetric(
+                                                    vertical: 5.0,
+                                                    horizontal: 5.0),
+                                                child: Text(
+                                                    'Stock : ' +
+                                                        _listProduct[index]
+                                                            .stok
+                                                            .toString(),
+                                                    style: fontDescription),
+                                              ),
+                                              SizedBox(
+                                                height: 5,
+                                              ),
+                                              Container(
+                                                margin: EdgeInsets.symmetric(
+                                                    vertical: 5.0,
+                                                    horizontal: 5.0),
+                                                child: Text(
+                                                    'Price : ' +
+                                                        _listProduct[index]
+                                                            .price,
+                                                    style: fontDescription),
+                                              ),
+                                              SizedBox(
+                                                height: 5,
+                                              ),
+                                              Container(
+                                                margin: EdgeInsets.all(5),
+                                                width: MediaQuery.of(context)
+                                                    .size
+                                                    .width,
+                                                child: RaisedButton(
+                                                    color: colorPrimary,
+                                                    child: Text('Add Cart',
+                                                        style: fontButton),
+                                                    onPressed: () {
+                                                      provider.setCart(
+                                                          _listProduct[index]);
+                                                    }),
+                                              )
+                                            ],
+                                          ),
                                         ),
                                       ),
                                       staggeredTileBuilder: (index) =>

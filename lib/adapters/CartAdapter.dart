@@ -34,29 +34,13 @@ class CartAdapter extends StatelessWidget {
                 children: <Widget>[
                   Flexible(
                     child: Text(
-                      model.nameProduct +
-                          " (Stock : " +
-                          model.stock.toString() +
-                          ")",
+                      model.nameProduct,
                       overflow: TextOverflow.fade,
                       softWrap: true,
                       style: TextStyle(
                           color: colorPrimary,
-                          fontWeight: FontWeight.w600,
+                          fontWeight: FontWeight.bold,
                           fontSize: 15),
-                    ),
-                  ),
-                  Container(
-                    width: 50,
-                    child: IconButton(
-                      onPressed: () {
-                        // calculateSubTotal(cart, cartValue, 0);
-                        // refreshController.requestRefresh();
-                      },
-                      tooltip: 'Hapus Produk',
-                      color: Colors.redAccent[700],
-                      icon: Icon(Icons.delete),
-                      iconSize: 20,
                     ),
                   )
                 ],
@@ -68,8 +52,8 @@ class CartAdapter extends StatelessWidget {
                 children: <Widget>[
                   Text("Harga : "),
                   Spacer(),
-                  Text(model.qty.toString() + 
-                    ' x Rp ' + model.price.toString(),
+                  Text(
+                    model.qty.toString() + ' x Rp ' + model.price.toString(),
                     // FlutterMoneyFormatter(amount: cart.price.toDouble())
                     //     .output
                     //     .nonSymbol,
@@ -80,12 +64,12 @@ class CartAdapter extends StatelessWidget {
               SizedBox(
                 height: 5,
               ),
-              
               Row(
                 children: <Widget>[
                   Text("Total : "),
                   Spacer(),
-                  Text((model.qty * model.price).toString(),
+                  Text(
+                    (model.qty * model.price).toString(),
                     // FlutterMoneyFormatter(amount: cart.price.toDouble())
                     //     .output
                     //     .nonSymbol,

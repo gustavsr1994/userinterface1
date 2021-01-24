@@ -149,9 +149,26 @@ class CartProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void setTotalAmount() {}
+  void setTotalAmount() {
+    String cart;
+    Cart cartModel;
+    List<Cart> listCart = new List<Cart>();
+    SharedPreferences.getInstance().then((value) {
+      cart = value.getString("cart");
+      dynamic objResult = jsonDecode(cart);
+      for (var result in objResult) {
+        cartModel = new Cart();
+        cartModel = Cart.fromJson(result as Map<String, dynamic>);
+        listCart.add(cartModel);
+      }
+    });
+    notifyListeners();
+  }
+
   int get getQty => qty;
   int get getQtyItem => qtyTotalProduct;
   int get getDiscount => discount;
   int get getSubTotal => subTotal;
+
+  // String get getTotalAmount => totalAmount;
 }

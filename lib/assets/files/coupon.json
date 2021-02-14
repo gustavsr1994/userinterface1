@@ -1,0 +1,25 @@
+{
+    "coupon": [
+        {
+            "idCoupon": "1",
+            "name": "Disc10",
+            "disc": "10",
+            "minimal": "10000",
+            "minPrice": "20000"
+        },
+        {
+            "idCoupon": "2",
+            "name": "Disc50",
+            "disc": "50",
+            "minimal": "100000",
+            "minPrice": "100000"
+        },
+        {
+            "idCoupon": "3",
+            "name": "Disc30",
+            "disc": "30",
+            "minimal": "20000",
+            "minPrice": "70000"
+        }
+    ]
+}

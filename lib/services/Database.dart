@@ -22,11 +22,6 @@ Future<List<Product>> getAllProducts() async {
       product.setId(databaseReference.child('product/' + index.toString()));
       products.add(product);
     }
-    // dataSnapshot.value.f((key, value) {
-    //   Product product = createProduct(value);
-    //   product.setId(databaseReference.child('product/' + key));
-    //   products.add(product);
-    // });
   }
   return products;
 }

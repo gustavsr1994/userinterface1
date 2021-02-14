@@ -7,6 +7,7 @@ import 'package:flutter_maps/assets/assets/BottomSheetCart.dart';
 import 'package:flutter_maps/assets/assets/BottomSheetDescription.dart';
 import 'package:flutter_maps/assets/network_image.dart';
 import 'package:flutter_maps/assets/style.dart';
+import 'package:flutter_maps/controller/CartController.dart';
 import 'package:flutter_maps/models/Cart.dart';
 import 'package:flutter_maps/models/Product.dart';
 import 'package:flutter_maps/providers/cartProvider.dart';
@@ -14,6 +15,7 @@ import 'package:flutter_maps/services/Database.dart';
 import 'package:flutter_maps/view/mainMenu.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 // import 'package:search_app_bar/filter.dart';
@@ -29,6 +31,7 @@ class MenuProduct extends StatefulWidget {
 }
 
 class _MenuProductState extends State<MenuProduct> {
+  CartController cartController = Get.put(CartController());
   List<Product> _listProduct;
   List<Product> listProductsReal;
   RefreshController refreshController =

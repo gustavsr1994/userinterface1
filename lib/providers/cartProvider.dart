@@ -13,6 +13,7 @@ class CartProvider with ChangeNotifier {
   int discount = 0;
   int subTotal = 0;
   String totalAmount;
+  String idProduct;
 
   void setCart(Product product) {
     List<Cart> listCart = new List<Cart>();
@@ -76,19 +77,21 @@ class CartProvider with ChangeNotifier {
     // int get getMedicalPaid => qtyTotalProduct;
   }
 
-  void addQty({@required int amount, int itemQty}) {
+  void addQty({@required int amount, int itemQty, String codeProduct}) {
     qty = itemQty + 1;
     int total = qty * amount;
     totalAmount = total.toString();
+    idProduct = codeProduct;
     notifyListeners();
   }
 
-  void minusQty({@required int amount, int itemQty}) {
+  void minusQty({@required int amount, int itemQty, String codeProduct}) {
     if (itemQty > 0) {
       qty = itemQty - 1;
     }
     int total = qty * amount;
     totalAmount = total.toString();
+    idProduct = codeProduct;
     notifyListeners();
   }
 
@@ -165,6 +168,7 @@ class CartProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  String get getIdProduct => idProduct;
   int get getQty => qty;
   int get getQtyItem => qtyTotalProduct;
   int get getDiscount => discount;

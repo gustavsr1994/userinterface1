@@ -1,11 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_maps/adapters/HeaderForm.dart';
 import 'package:flutter_maps/adapters/RouteAdapter.dart';
 import 'package:flutter_maps/adapters/TextChildCart.dart';
-import 'package:flutter_maps/assets/network_image.dart';
 import 'package:flutter_maps/assets/style.dart';
 import 'package:flutter_maps/models/Profile.dart';
+import 'package:flutter_maps/repository/ProfileRepository.dart';
 import 'package:flutter_maps/view/mainMenu.dart';
 import 'package:flutter_maps/view/mapsView.dart';
 import 'package:getwidget/getwidget.dart';
@@ -21,7 +20,7 @@ class _AboutUsState extends State<AboutUs> {
   @override
   void initState() {
     super.initState();
-    Profile.getProfile().then((value) {
+    ProfileRepository.getProfile().then((value) {
       setState(() {
         model = value;
       });

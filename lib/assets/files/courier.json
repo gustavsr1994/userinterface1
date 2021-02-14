@@ -1,0 +1,19 @@
+{
+    "courier": [
+        {
+            "idCourier": "1",
+            "name": "J&Y Express",
+            "price": "10000"
+        },
+        {
+            "idCourier": "2",
+            "name": "Ninja Gila",
+            "price": "12000"
+        },
+        {
+            "idCourier": "3",
+            "name": "Ojol",
+            "price": "25000"
+        }
+    ]
+}

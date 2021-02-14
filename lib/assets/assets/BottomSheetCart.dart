@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_maps/adapters/CartAdapter.dart';
 import 'package:flutter_maps/adapters/RouteAdapter.dart';
 import 'package:flutter_maps/assets/style.dart';
+import 'package:flutter_maps/controller/CartController.dart';
 import 'package:flutter_maps/models/Cart.dart';
 import 'package:flutter_maps/providers/cartProvider.dart';
+import 'package:flutter_maps/view/detailTransaction.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void bottomSheetCart(
@@ -73,9 +75,8 @@ void bottomSheetCart(
                           side: BorderSide(
                               color: colorPrimary, style: BorderStyle.solid)),
                       onPressed: () {
-                        // RouteAdapter().routeNavigator(
-                        //     context,
-                        //     );
+                        RouteAdapter()
+                            .routeNavigator(context, DetailTransaction());
                       })),
             ],
           ),

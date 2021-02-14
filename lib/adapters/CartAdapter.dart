@@ -5,7 +5,6 @@ import 'package:flutter_maps/assets/style.dart';
 import 'package:flutter_maps/models/Cart.dart';
 import 'package:flutter_maps/providers/cartProvider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
 
 class CartAdapter extends StatelessWidget {
   Cart model;
@@ -19,13 +18,13 @@ class CartAdapter extends StatelessWidget {
     //     width: MediaQuery.of(context).size.width,
     //     height: MediaQuery.of(context).size.height,
     //     allowFontScaling: true);
+
     return ClayContainer(
         padding: EdgeInsets.all(0),
         margin: EdgeInsets.all(10),
-        height: 120,
+        height: 130,
         depth: 50,
         surfaceColor: colorNetral,
-        // emboss: true,
         customBorderRadius: BorderRadius.all(Radius.circular(20)),
         child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 10),

@@ -36,6 +36,7 @@ dependencies:
   flutter_staggered_grid_view: null
   flutter_svg: null
   font_awesome_flutter: null
+  get: ^3.24.0
   getwidget: ^1.2.4
   google_maps_flutter: ^1.0.6
   google_sign_in: ^4.5.6
@@ -58,6 +59,9 @@ flutter:
     - lib/assets/images/logo_flutter.png
     - lib/assets/images/photo_profile.jpg
     - lib/assets/files/biodata.json
+    - lib/assets/files/courier.json
+    - lib/assets/files/coupon.json
+
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

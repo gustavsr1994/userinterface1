@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_maps/adapters/RouteAdapter.dart';
 import 'package:flutter_maps/assets/style.dart';
 import 'package:flutter_maps/view/aboutUs.dart';
+import 'package:flutter_maps/view/mainMenuView.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapsView extends StatefulWidget {
@@ -67,6 +68,6 @@ class _MapsViewState extends State<MapsView> {
   }
 
   Future<bool> onBackPress() {
-    return RouteAdapter().routeNavigator(context, AboutUs());
+    return RouteAdapter().routeNavigator(context, MainMenuView());
   }
 }

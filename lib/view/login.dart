@@ -1,16 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_maps/adapters/RouteAdapter.dart';
 import 'package:flutter_maps/assets/style.dart';
 import 'package:flutter_maps/bloc/loginBloc/loginBloc.dart';
 import 'package:flutter_maps/bloc/loginBloc/loginEvent.dart';
 import 'package:flutter_maps/bloc/loginBloc/loginState.dart';
 import 'package:flutter_maps/repository/LoginRepository.dart';
 import 'package:flutter_maps/services/AuthMethode.dart';
-import 'package:flutter_maps/view/loginPhone.dart';
-import 'package:flutter_maps/view/mainMenu.dart';
-import 'package:flutter_maps/view/registrasi.dart';
 
 class LoginView extends StatefulWidget {
   @override

@@ -5,7 +5,7 @@ import 'package:flutter_maps/adapters/RouteAdapter.dart';
 import 'package:flutter_maps/models/UserModel.dart';
 import 'package:flutter_maps/repository/LoginRepository.dart';
 import 'package:flutter_maps/services/AuthMethode.dart';
-import 'package:flutter_maps/view/mainMenu.dart';
+import 'package:flutter_maps/view/mainMenuView.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -36,7 +36,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         }
 
         if (model.userId != null) {
-          RouteAdapter().routeNavigator(event.context, MainMenu());
+          RouteAdapter().routeNavigator(event.context, MainMenuView());
           yield LoginLoadedState(userModel: model, context: event.context);
         } else {
           yield LoginErrorState(message: model.message);

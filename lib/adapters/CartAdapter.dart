@@ -22,7 +22,7 @@ class CartAdapter extends StatelessWidget {
     return ClayContainer(
         padding: EdgeInsets.all(0),
         margin: EdgeInsets.all(10),
-        height: 130,
+        height: 100,
         depth: 50,
         surfaceColor: colorNetral,
         customBorderRadius: BorderRadius.all(Radius.circular(20)),

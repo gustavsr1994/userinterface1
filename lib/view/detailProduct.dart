@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_maps/adapters/RouteAdapter.dart';
 import 'package:flutter_maps/assets/network_image.dart';
 import 'package:flutter_maps/assets/style.dart';
-import 'package:flutter_maps/view/mainMenu.dart';
+import 'package:flutter_maps/view/mainMenuView.dart';
 
 class DetailProduct extends StatefulWidget {
   @override
@@ -19,7 +20,7 @@ class _DetailProductState extends State<DetailProduct> {
                   leading: BackButton(
                     color: colorAccent,
                     onPressed: () {
-                      Navigator.pushReplacement(context, _createRoute());
+                      RouteAdapter().routeNavigator(context, MainMenuView());
                     },
                   ),
                   backgroundColor: colorPrimary,
@@ -51,24 +52,5 @@ class _DetailProductState extends State<DetailProduct> {
                 ],
               ),
             )));
-  }
-
-  Route _createRoute() {
-    return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => MainMenu(),
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        var begin = Offset(0.0, 1.0);
-        var end = Offset.zero;
-        var curve = Curves.ease;
-
-        var tween =
-            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-
-        return SlideTransition(
-          position: animation.drive(tween),
-          child: child,
-        );
-      },
-    );
   }
 }

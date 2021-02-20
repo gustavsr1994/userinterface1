@@ -2,8 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_maps/adapters/RouteAdapter.dart';
 import 'package:flutter_maps/assets/style.dart';
-import 'package:flutter_maps/bloc/loginBloc/loginState.dart';
-import 'package:flutter_maps/view/mainMenu.dart';
+import 'package:flutter_maps/view/mainMenuView.dart';
 
 class LoginPhoneView extends StatefulWidget {
   @override
@@ -89,7 +88,7 @@ class _LoginPhoneViewState extends State<LoginPhoneView> {
               await _authService.signInWithCredential(credential);
           User firebaseUser = result.user;
           if (firebaseUser != null) {
-            RouteAdapter().routeNavigator(context, MainMenu());
+            RouteAdapter().routeNavigator(context, MainMenuView());
           }
         },
         verificationFailed: (FirebaseException exception) {
@@ -130,7 +129,7 @@ class _LoginPhoneViewState extends State<LoginPhoneView> {
                             User firebaseUser = result.user;
                             if (firebaseUser != null) {
                               RouteAdapter()
-                                  .routeNavigator(context, MainMenu());
+                                  .routeNavigator(context, MainMenuView());
                             }
                           }),
                     ],

@@ -1,52 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_maps/adapters/HeaderForm.dart';
 import 'package:flutter_maps/adapters/RouteAdapter.dart';
 import 'package:flutter_maps/adapters/TextChildCart.dart';
 import 'package:flutter_maps/assets/style.dart';
 import 'package:flutter_maps/models/Profile.dart';
-import 'package:flutter_maps/repository/ProfileRepository.dart';
-import 'package:flutter_maps/view/mainMenu.dart';
 import 'package:flutter_maps/view/mapsView.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:getwidget/components/accordian/gf_accordian.dart';
 
-class AboutUs extends StatefulWidget {
-  @override
-  _AboutUsState createState() => _AboutUsState();
-}
-
-class _AboutUsState extends State<AboutUs> {
-  Profile model;
-  @override
-  void initState() {
-    super.initState();
-    ProfileRepository.getProfile().then((value) {
-      setState(() {
-        model = value;
-      });
-    });
+class AboutUsView {
+  Widget bodyAboutUs(BuildContext context, Profile model) {
+    return SingleChildScrollView(
+        child: Column(
+      children: <Widget>[HeaderProfile(context, model), BodyProfile(model, context)],
+    ));
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return WillPopScope(
-        onWillPop: onBackPress,
-        child: Scaffold(
-            appBar: AppBar(
-              backgroundColor: colorPrimary,
-              leading: IconButton(
-                icon: Icon(Icons.arrow_back, color: colorAccent),
-                onPressed: onBackPress,
-              ),
-              title: HeaderForm(title: 'My Profile'),
-            ),
-            body: SingleChildScrollView(
-                child: Column(
-              children: <Widget>[HeaderProfile(), BodyProfile(model)],
-            ))));
-  }
-
-  Widget HeaderProfile() {
+  Widget HeaderProfile(BuildContext context, Profile model) {
     return Stack(children: <Widget>[
       Ink(
         height: 240,
@@ -101,11 +70,11 @@ class _AboutUsState extends State<AboutUs> {
     ]);
   }
 
-  Widget BodyProfile(Profile data) {
+  Widget BodyProfile(Profile data, BuildContext context) {
     return Column(children: <Widget>[
       PrivateData(data),
       Educations(data),
-      WorkHistory(data)
+      WorkHistory(data, context)
     ]);
   }
 
@@ -143,7 +112,7 @@ class _AboutUsState extends State<AboutUs> {
         ]));
   }
 
-  GFAccordion WorkHistory(Profile data) {
+  GFAccordion WorkHistory(Profile data, BuildContext context) {
     return GFAccordion(
         title: 'History Work',
         textStyle: fontDescription,
@@ -173,9 +142,5 @@ class _AboutUsState extends State<AboutUs> {
                   )
                 ]))
         ]));
-  }
-
-  Future<bool> onBackPress() {
-    return RouteAdapter().routeNavigator(context, MainMenu());
   }
 }

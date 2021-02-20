@@ -34,7 +34,8 @@ dependencies:
   firebase_database: ^4.4.0
   flutter_bloc: ^6.1.1
   flutter_staggered_grid_view: null
-  flutter_svg: null
+  flutter_svg: 
+  flutter_svg_provider: ^0.1.8
   font_awesome_flutter: null
   get: ^3.24.0
   getwidget: ^1.2.4
@@ -61,6 +62,11 @@ flutter:
     - lib/assets/files/biodata.json
     - lib/assets/files/courier.json
     - lib/assets/files/coupon.json
+    - lib/assets/images/shopping_cart.svg
+    - lib/assets/images/box.svg
+    - lib/assets/images/clipboard.svg
+    - lib/assets/images/user.svg
+    - lib/assets/images/window.svg
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

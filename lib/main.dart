@@ -1,8 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_maps/view/login.dart';
-import 'package:flutter_maps/view/mainMenu.dart';
-import 'package:flutter_maps/view/menuProduct.dart';
+import 'package:flutter_maps/view/mainMenuView.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
@@ -31,6 +29,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: name == null ? LoginView() : MainMenu());
+    // return MaterialApp(home: name == null ? LoginView() : MainMenu());
+    return MaterialApp(home: MainMenuView());
   }
 }

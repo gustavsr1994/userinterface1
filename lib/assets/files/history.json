@@ -1,0 +1,35 @@
+{
+    "idOrder": "OR1000",
+    "nameOrder": "Bambang",
+    "address": "Jln Mawar no 22 Pondok Gede, jatiwarna, Kota Bekasi",
+    "subtotal": "150000",
+    "disc": "10000",
+    "courier": "Ojol",
+    "amountCourier": "25000",
+    "otherBea": "0",
+    "total": "165000",    
+    "dateRequest": "2020-12-01 13:20",
+    "datePayment": "2020-12-01 13:30",
+    "dateDelivery": "2020-12-02 16:30",
+    "dateComplete": "2020-12-04 15:10",
+    "history": [
+        {
+            "nameProduct": "Susu",
+            "qty": "4",
+            "price": "25000",
+            "total": "100000"
+        },
+        {
+            "nameProduct": "Melon",
+            "qty": "2",
+            "price": "15000",
+            "total": "30000"
+        },
+        {
+            "nameProduct": "Kacang Mede",
+            "qty": "2",
+            "price": "15000",
+            "total": "30000"
+        }
+    ]
+}

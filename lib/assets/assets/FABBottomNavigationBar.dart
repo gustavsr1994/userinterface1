@@ -70,7 +70,7 @@ class _FABBottomNavigationBarState extends State<FABBottomNavigationBar> {
             SizedBox(height: widget.iconSize),
             Text(
               widget.centerItemText ?? '',
-              style: TextStyle(color: widget.color),
+              style: TextStyle(color: widget.color, fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -84,6 +84,7 @@ class _FABBottomNavigationBarState extends State<FABBottomNavigationBar> {
     ValueChanged<int> onPressed,
   }) {
     Color color = _selectedIndex == index ? widget.selectedColor : null;
+    FontWeight fontWeight = _selectedIndex == index ? FontWeight.normal : FontWeight.bold;
     return Expanded(
       child: SizedBox(
         height: widget.height,
@@ -101,7 +102,7 @@ class _FABBottomNavigationBarState extends State<FABBottomNavigationBar> {
                   Image(image: Svg(item.iconData, size: Size(30, 30))),
                   Text(
                     item.text,
-                    style: TextStyle(color: colorPrimary),
+                    style: TextStyle(color: colorPrimary, fontWeight: fontWeight),
                   )
                 ],
               ),

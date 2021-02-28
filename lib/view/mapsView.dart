@@ -52,7 +52,7 @@ class _MapsViewState extends State<MapsView> {
       appBar: AppBar(
         backgroundColor: colorPrimary,
         leading: BackButton(
-          color: colorAccent,
+          color: colorAccentPrimary,
           onPressed: onBackPress,
         ),
         title: Text(widget.nameCorp, style: fontTitle),

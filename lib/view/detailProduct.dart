@@ -18,7 +18,7 @@ class _DetailProductState extends State<DetailProduct> {
               return <Widget>[
                 SliverAppBar(
                   leading: BackButton(
-                    color: colorAccent,
+                    color: colorAccentPrimary,
                     onPressed: () {
                       RouteAdapter().routeNavigator(context, MainMenuView());
                     },

@@ -23,7 +23,7 @@ class AboutUsView {
             borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(30),
                 bottomRight: Radius.circular(30)),
-            color: colorAccent),
+            color: colorAccentPrimary),
       ),
       Ink(
         height: 180,
@@ -131,7 +131,7 @@ class AboutUsView {
                     width: MediaQuery.of(context).size.width,
                     margin: EdgeInsets.all(10),
                     child: RaisedButton(
-                        color: colorAccent,
+                        color: colorAccentPrimary,
                         child: Text('Check Map'),
                         onPressed: () => RouteAdapter().routeNavigator(
                             context,

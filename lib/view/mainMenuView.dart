@@ -8,13 +8,16 @@ import 'package:flutter_maps/assets/assets/FABBottomNavigationBar.dart';
 import 'package:flutter_maps/assets/network_image.dart';
 import 'package:flutter_maps/assets/style.dart';
 import 'package:flutter_maps/models/Cart.dart';
+import 'package:flutter_maps/models/DataOrder.dart';
 import 'package:flutter_maps/models/FABBottomIcon.dart';
 import 'package:flutter_maps/models/Product.dart';
 import 'package:flutter_maps/models/Profile.dart';
 import 'package:flutter_maps/providers/cartProvider.dart';
+import 'package:flutter_maps/repository/HistoryRepository.dart';
 import 'package:flutter_maps/repository/ProfileRepository.dart';
 import 'package:flutter_maps/services/Database.dart';
 import 'package:flutter_maps/view/aboutUs.dart';
+import 'package:flutter_maps/view/historyTransaction.dart';
 import 'package:flutter_maps/view/login.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
@@ -31,6 +34,7 @@ class MainMenuView extends StatefulWidget {
 class _MainMenuViewState extends State<MainMenuView> {
   int currentIndex = 0;
   Profile profileModel;
+  DataOrder orderModel;
   List<Product> _listProduct;
   List<Product> listProductsReal;
   RefreshController refreshController =
@@ -43,6 +47,7 @@ class _MainMenuViewState extends State<MainMenuView> {
     countCart = 0;
     listProduct();
     getProfile();
+    getDataOrder();
   }
 
   @override
@@ -55,7 +60,7 @@ class _MainMenuViewState extends State<MainMenuView> {
                     backgroundColor: colorPrimary,
                     elevation: 0,
                     leading: BackButton(
-                      color: colorAccent,
+                      color: colorAccentPrimary,
                       onPressed: () {
                         RouteAdapter().routeNavigator(context, LoginView());
                       },
@@ -87,7 +92,7 @@ class _MainMenuViewState extends State<MainMenuView> {
                             totalAmount: totalAmount);
                       });
                     },
-                    backgroundColor: colorAccent,
+                    backgroundColor: colorAccentPrimary,
                     child: Image(
                         image: Svg('lib/assets/images/shopping_cart.svg',
                             size: Size(30, 30)))),
@@ -97,7 +102,9 @@ class _MainMenuViewState extends State<MainMenuView> {
                   notchedShape: CircularNotchedRectangle(),
                   color: colorPrimary,
                   height: 60,
-                  selectedColor: colorAccent,
+                  selectedColor: colorAccentPrimary,
+                  centerItemText: 'Cart',
+                  iconSize: 30,
                   onTabSelected: (index) {
                     setState(() {
                       currentIndex = index;
@@ -122,6 +129,7 @@ class _MainMenuViewState extends State<MainMenuView> {
     if (currentIndex == 0) {
       return bodyProduct(provider);
     } else if (currentIndex == 1) {
+      return HistoryTransaction().bodyHistory(context, orderModel);
     } else if (currentIndex == 2) {
     } else {
       return AboutUsView().bodyAboutUs(context, profileModel);
@@ -256,6 +264,15 @@ class _MainMenuViewState extends State<MainMenuView> {
     ProfileRepository.getProfile().then((value) {
       setState(() {
         profileModel = value;
+      });
+    });
+    return null;
+  }
+
+  Future<Null> getDataOrder() async {
+    HistoryRepository.getDataOrder().then((value) {
+      setState(() {
+       orderModel =  value;
       });
     });
     return null;

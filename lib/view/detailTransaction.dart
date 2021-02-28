@@ -140,23 +140,23 @@ class _DetailTransactionState extends State<DetailTransaction> {
                   ],
                 )),
           ),
-          GestureDetector(
-            onTap: () {},
-            child: Container(
-                margin: EdgeInsets.all(10),
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    border: Border.all(color: colorPrimary),
-                    borderRadius: BorderRadius.all(Radius.circular(15))),
-                child: Row(
-                  children: [
-                    Text('Pilih Pembayaran',
-                        style: TextStyle(fontWeight: FontWeight.bold)),
-                    Spacer(),
-                    Icon(FontAwesomeIcons.angleDown)
-                  ],
-                )),
-          ),
+          // GestureDetector(
+          //   onTap: () {},
+          //   child: Container(
+          //       margin: EdgeInsets.all(10),
+          //       padding: EdgeInsets.all(10),
+          //       decoration: BoxDecoration(
+          //           border: Border.all(color: colorPrimary),
+          //           borderRadius: BorderRadius.all(Radius.circular(15))),
+          //       child: Row(
+          //         children: [
+          //           Text('Pilih Pembayaran',
+          //               style: TextStyle(fontWeight: FontWeight.bold)),
+          //           Spacer(),
+          //           Icon(FontAwesomeIcons.angleDown)
+          //         ],
+          //       )),
+          // ),
           Container(
               width: MediaQuery.of(context).size.width,
               margin: EdgeInsets.all(15),
@@ -175,6 +175,16 @@ class _DetailTransactionState extends State<DetailTransaction> {
                         fontWeight: FontWeight.bold),
                     textAlign: TextAlign.right),
               ])),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            margin: EdgeInsets.all(10),
+            child: RaisedButton(
+              color: colorPrimary,
+                child: Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Text('Pilih Pembayaran', style: fontButton)),
+                onPressed: () {}),
+          )
         ],
       ),
     );

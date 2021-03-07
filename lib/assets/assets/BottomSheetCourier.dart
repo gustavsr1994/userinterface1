@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_maps/adapters/CourierAdapter.dart';
 import 'package:flutter_maps/models/Courier.dart';
+import 'package:flutter_maps/providers/courierProvider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../style.dart';
 
 void bottomSheetCourier(
-    {@required BuildContext context, @required List<Courier> listCourier}) {
+    {@required BuildContext context,
+    @required List<Courier> listCourier,
+    CourierProvider provider}) {
   showModalBottomSheet(
       context: context,
       builder: (BuildContext context2) {
@@ -32,7 +35,10 @@ void bottomSheetCourier(
                     )
                   ])),
               for (int index = 0; index < listCourier.length; index++)
-                CourierAdapter(context: context, model: listCourier[index]),
+                CourierAdapter(
+                    context: context,
+                    model: listCourier[index],
+                    provider: provider),
             ],
           ),
         );

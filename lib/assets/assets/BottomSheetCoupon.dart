@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_maps/adapters/CouponAdapter.dart';
 import 'package:flutter_maps/assets/style.dart';
 import 'package:flutter_maps/models/Coupon.dart';
+import 'package:flutter_maps/providers/discountProvider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void bottomSheetCoupon(
     {@required BuildContext context,
-    @required List<Coupon> listCoupon}) {
+    @required List<Coupon> listCoupon,
+    DiscountProvider provider}) {
   showModalBottomSheet(
       context: context,
       builder: (BuildContext context2) {
@@ -32,7 +34,7 @@ void bottomSheetCoupon(
                     )
                   ])),
               for (int index = 0; index < listCoupon.length; index++)
-                CouponAdapter(context: context, model: listCoupon[index]),
+                CouponAdapter(context: context, model: listCoupon[index], provider: provider),
             ],
           ),
         );

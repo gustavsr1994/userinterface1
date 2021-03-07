@@ -63,6 +63,7 @@ flutter:
     - lib/assets/files/courier.json
     - lib/assets/files/coupon.json
     - lib/assets/files/history.json
+    - lib/assets/files/payment.json
     - lib/assets/images/shopping_cart.svg
     - lib/assets/images/box.svg
     - lib/assets/images/clipboard.svg

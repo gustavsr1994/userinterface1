@@ -26,6 +26,8 @@ import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'detailTransaction.dart';
+
 class MainMenuView extends StatefulWidget {
   @override
   _MainMenuViewState createState() => _MainMenuViewState();
@@ -85,11 +87,13 @@ class _MainMenuViewState extends State<MainMenuView> {
                           totalAmount = cartModel.subTotal + totalAmount;
                           listCart.add(cartModel);
                         }
-                        bottomSheetCart(
-                            context: context,
-                            listCart: listCart,
-                            provider: provider,
-                            totalAmount: totalAmount);
+                        RouteAdapter()
+                            .routeNavigator(context, DetailTransaction());
+                        // bottomSheetCart(
+                        //     context: context,
+                        //     listCart: listCart,
+                        //     provider: provider,
+                        //     totalAmount: totalAmount);
                       });
                     },
                     backgroundColor: colorAccentPrimary,
@@ -272,7 +276,7 @@ class _MainMenuViewState extends State<MainMenuView> {
   Future<Null> getDataOrder() async {
     HistoryRepository.getDataOrder().then((value) {
       setState(() {
-       orderModel =  value;
+        orderModel = value;
       });
     });
     return null;

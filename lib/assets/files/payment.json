@@ -1,0 +1,16 @@
+{
+    "payment": [
+        {
+            "idCoupon": "1",
+            "name": "Virtual Account"
+        },
+        {
+            "idCoupon": "2",
+            "name": "Card Payment"
+        },
+        {
+            "idCoupon": "3",
+            "name": "Paylater"
+        }
+    ]
+}

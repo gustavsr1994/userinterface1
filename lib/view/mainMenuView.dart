@@ -31,6 +31,8 @@ import 'detailTransaction.dart';
 class MainMenuView extends StatefulWidget {
   @override
   _MainMenuViewState createState() => _MainMenuViewState();
+  int index;
+  MainMenuView({this.index});
 }
 
 class _MainMenuViewState extends State<MainMenuView> {
@@ -46,6 +48,10 @@ class _MainMenuViewState extends State<MainMenuView> {
   @override
   void initState() {
     super.initState();
+    if (widget.index != null)
+      setState(() {
+        currentIndex = widget.index;
+      });
     countCart = 0;
     listProduct();
     getProfile();
@@ -114,6 +120,7 @@ class _MainMenuViewState extends State<MainMenuView> {
                       currentIndex = index;
                     });
                   },
+                  indexTab: currentIndex,
                   items: [
                     FABBottomIcon(
                         iconData: 'lib/assets/images/box.svg', text: 'Product'),

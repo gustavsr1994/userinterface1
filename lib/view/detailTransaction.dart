@@ -77,154 +77,160 @@ class _DetailTransactionState extends State<DetailTransaction> {
         ChangeNotifierProvider(create: (context) => DiscountProvider()),
         ChangeNotifierProvider(create: (context) => CourierProvider()),
       ],
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: colorPrimary,
-          centerTitle: true,
-          title: Text(
-            'My Transaction',
-            style: fontTitle,
+      child: WillPopScope(
+        onWillPop: () {
+          return RouteAdapter().routeNavigator(context, MainMenuView());
+        },
+        child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: colorPrimary,
+            centerTitle: true,
+            title: Text(
+              'My Transaction',
+              style: fontTitle,
+            ),
+            leading: BackButton(
+              color: colorAccentPrimary,
+              onPressed: () {
+                RouteAdapter().routeNavigator(context, MainMenuView());
+              },
+            ),
           ),
-          leading: BackButton(
-            color: colorAccentPrimary,
-            onPressed: () {
-              RouteAdapter().routeNavigator(context, MainMenuView());
-            },
-          ),
-        ),
-        body: Column(
-          children: [
-            Expanded(
-              flex: 1,
-              child: Container(
-                child: SmartRefresher(
-                    controller: refreshController,
-                    onRefresh: getListCart,
-                    child: listCart == null
-                        ? Center(
-                            child: Text(
-                              'No Data',
-                              style: fontTitle,
-                            ),
-                          )
-                        : ListView(
-                            children: [
-                              for (int index = 0;
-                                  index < listCart.length;
-                                  index++)
-                                CartAdapter(
-                                    context: context, model: listCart[index])
-                            ],
-                          )),
-              ),
-            ),
-            Consumer<DiscountProvider>(
-              builder: (context, discProvider, _) => GestureDetector(
-                onTap: () {
-                  if (discProvider.icon == FontAwesomeIcons.times)
-                    discProvider.deleteDiscount();
-                  else
-                    bottomSheetCoupon(
-                        context: context,
-                        listCoupon: listCoupon,
-                        provider: discProvider);
-                },
+          body: Column(
+            children: [
+              Expanded(
+                flex: 1,
                 child: Container(
-                    margin: EdgeInsets.all(10),
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                        border: Border.all(color: colorPrimary),
-                        borderRadius: BorderRadius.all(Radius.circular(15))),
-                    child: Row(
-                      children: [
-                        Text(discProvider.nameCoupon,
-                            style: TextStyle(fontWeight: FontWeight.bold)),
-                        Spacer(),
-                        GestureDetector(
-                          onTap: () {
-                            if (discProvider.icon == FontAwesomeIcons.times)
-                              discProvider.deleteDiscount();
-                            else
-                              bottomSheetCoupon(
-                                  context: context,
-                                  listCoupon: listCoupon,
-                                  provider: discProvider);
-                          },
-                          child: Icon(discProvider.icon),
-                        )
-                      ],
-                    )),
+                  child: SmartRefresher(
+                      controller: refreshController,
+                      onRefresh: getListCart,
+                      child: listCart == null
+                          ? Center(
+                              child: Text(
+                                'No Data',
+                                style: fontTitle,
+                              ),
+                            )
+                          : ListView(
+                              children: [
+                                for (int index = 0;
+                                    index < listCart.length;
+                                    index++)
+                                  CartAdapter(
+                                      context: context, model: listCart[index])
+                              ],
+                            )),
+                ),
               ),
-            ),
-            Consumer<CourierProvider>(
-              builder: (context, courierProvider, _) => GestureDetector(
-                onTap: () {
-                  if (courierProvider.icon == FontAwesomeIcons.times)
-                    courierProvider.deleteCourier();
-                  else
-                    bottomSheetCourier(
-                        context: context,
-                        listCourier: listCourier,
-                        provider: courierProvider);
-                },
-                child: Container(
-                    margin: EdgeInsets.all(10),
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                        border: Border.all(color: colorPrimary),
-                        borderRadius: BorderRadius.all(Radius.circular(15))),
-                    child: Row(
-                      children: [
-                        Text(courierProvider.nameCourier,
-                            style: TextStyle(fontWeight: FontWeight.bold)),
-                        Spacer(),
-                        GestureDetector(
-                          onTap: () {
-                            if (courierProvider.icon == FontAwesomeIcons.times)
-                              courierProvider.deleteCourier();
-                            else
-                              bottomSheetCourier(
-                                  context: context,
-                                  listCourier: listCourier,
-                                  provider: courierProvider);
-                          },
-                          child: Icon(courierProvider.icon),
-                        )
-                      ],
-                    )),
-              ),
-            ),
-            Container(
-                width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.all(15),
-                child: Row(children: [
-                  Text('Total',
-                      style: TextStyle(
-                          color: colorPrimary,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.left),
-                  Spacer(),
-                  Text(totalAmount.toString(),
-                      style: TextStyle(
-                          color: colorPrimary,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.right),
-                ])),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              margin: EdgeInsets.all(10),
-              child: RaisedButton(
-                  color: colorPrimary,
-                  child: Padding(
+              Consumer<DiscountProvider>(
+                builder: (context, discProvider, _) => GestureDetector(
+                  onTap: () {
+                    if (discProvider.icon == FontAwesomeIcons.times)
+                      discProvider.deleteDiscount();
+                    else
+                      bottomSheetCoupon(
+                          context: context,
+                          listCoupon: listCoupon,
+                          provider: discProvider);
+                  },
+                  child: Container(
+                      margin: EdgeInsets.all(10),
                       padding: EdgeInsets.all(10),
-                      child: Text('Pilih Pembayaran', style: fontButton)),
-                  onPressed: () {
-                    RouteAdapter().routeNavigator(context, ListPayment());
-                  }),
-            )
-          ],
+                      decoration: BoxDecoration(
+                          border: Border.all(color: colorPrimary),
+                          borderRadius: BorderRadius.all(Radius.circular(15))),
+                      child: Row(
+                        children: [
+                          Text(discProvider.nameCoupon,
+                              style: TextStyle(fontWeight: FontWeight.bold)),
+                          Spacer(),
+                          GestureDetector(
+                            onTap: () {
+                              if (discProvider.icon == FontAwesomeIcons.times)
+                                discProvider.deleteDiscount();
+                              else
+                                bottomSheetCoupon(
+                                    context: context,
+                                    listCoupon: listCoupon,
+                                    provider: discProvider);
+                            },
+                            child: Icon(discProvider.icon),
+                          )
+                        ],
+                      )),
+                ),
+              ),
+              Consumer<CourierProvider>(
+                builder: (context, courierProvider, _) => GestureDetector(
+                  onTap: () {
+                    if (courierProvider.icon == FontAwesomeIcons.times)
+                      courierProvider.deleteCourier();
+                    else
+                      bottomSheetCourier(
+                          context: context,
+                          listCourier: listCourier,
+                          provider: courierProvider);
+                  },
+                  child: Container(
+                      margin: EdgeInsets.all(10),
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: colorPrimary),
+                          borderRadius: BorderRadius.all(Radius.circular(15))),
+                      child: Row(
+                        children: [
+                          Text(courierProvider.nameCourier,
+                              style: TextStyle(fontWeight: FontWeight.bold)),
+                          Spacer(),
+                          GestureDetector(
+                            onTap: () {
+                              if (courierProvider.icon ==
+                                  FontAwesomeIcons.times)
+                                courierProvider.deleteCourier();
+                              else
+                                bottomSheetCourier(
+                                    context: context,
+                                    listCourier: listCourier,
+                                    provider: courierProvider);
+                            },
+                            child: Icon(courierProvider.icon),
+                          )
+                        ],
+                      )),
+                ),
+              ),
+              Container(
+                  width: MediaQuery.of(context).size.width,
+                  margin: EdgeInsets.all(15),
+                  child: Row(children: [
+                    Text('Total',
+                        style: TextStyle(
+                            color: colorPrimary,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.left),
+                    Spacer(),
+                    Text(totalAmount.toString(),
+                        style: TextStyle(
+                            color: colorPrimary,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.right),
+                  ])),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                margin: EdgeInsets.all(10),
+                child: RaisedButton(
+                    color: colorPrimary,
+                    child: Padding(
+                        padding: EdgeInsets.all(10),
+                        child: Text('Pilih Pembayaran', style: fontButton)),
+                    onPressed: () {
+                      RouteAdapter().routeNavigator(context, ListPayment());
+                    }),
+              )
+            ],
+          ),
         ),
       ),
     );
